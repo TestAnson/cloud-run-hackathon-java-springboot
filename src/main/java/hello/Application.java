@@ -27,6 +27,10 @@ public class Application {
     public String direction;
     public Boolean wasHit;
     public Integer score;
+    
+    public Coordinate getCoordinate(){
+      return new Coordinate(x,y);
+    }
   }
 
   static class Arena {
@@ -37,6 +41,10 @@ public class Application {
   static class ArenaUpdate {
     public Links _links;
     public Arena arena;
+  }
+  
+  static class Coordinate{
+    Integer x,y;
   }
 
   public static void main(String[] args) {
@@ -52,14 +60,32 @@ public class Application {
   public String index() {
     return "Let the battle begin!";
   }
-
+  
+  Coordinate lastCo;
+  String lastAction;
+  
   @PostMapping("/**")
   public String index(@RequestBody ArenaUpdate arenaUpdate) {
+    
+    PlayerState my State = areaUdate.arena,state.get(arenaUpdate._links.self.href);
+    Map<Coordinate, PlayerState> map = buildMap(arenaUpdate);
+    
     System.out.println(arenaUpdate);
     String[] commands = new String[]{"F", "R", "L", "T"};
     int i = new Random().nextInt(4);
     return commands[i];
   }
 
+
+
+  if (someoneINfrontOfMe(mystate,map)){
+  lastCo = mystate.getCoordinate();
+  lastAction = "T";
+  return "T";
+}
+  
+  
+  
+  
 }
 
